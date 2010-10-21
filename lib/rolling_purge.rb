@@ -2,7 +2,7 @@ module RollingPurge
 
   ROOT               = File.expand_path "#{File.dirname __FILE__}/.."
   VERSION            = File.read("#{ROOT}/VERSION").chomp
-  PROCESS_IDENTIFIER = "RollingPurge: purging urls"
+  PROCESS_IDENTIFIER = "RollingPurge"
 
   class << self; attr_accessor :configuration; end
 
@@ -11,11 +11,12 @@ module RollingPurge
     yield configuration
   end
 
-  def self.stop
-    Purger.job_ids.each do |pid|
-      puts "=== Killing process: #{pid}"
-      Process.kill("KILL", pid)
-    end
+  def self.stop!
+    Purger.stop!
+  end
+
+  def self.purge! urls
+    Purger.new(urls).purge!
   end
 
 end

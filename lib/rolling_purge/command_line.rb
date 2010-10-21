@@ -17,7 +17,7 @@ module RollingPurge
           config.send("#{key}=".to_sym, value)
         end
       end
-      Purger.new(@urls).purge!
+      RollingPurge.purge! @urls
     end
 
     private
@@ -39,7 +39,7 @@ module RollingPurge
         opts.on("-s", "--server", "Varnish url, e.g. http://127.0.0.1:6082/") do |s|
           @options[:server] = s
         end
-        opts.on("-o", "--log_file", "Log file to output to defaults to standard out") do |o|
+        opts.on("-o", "--log_file LOG_PATH", "Log file to output to defaults to standard out") do |o|
           @options[:log_file] = o
         end
       end

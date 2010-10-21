@@ -12,8 +12,15 @@ module RollingPurge
     end
 
     def logger
-      @logger = @log_file == STDOUT ? @log_file : File.open(@log_file)
+      if !log_file.respond_to?(:write)
+        real_path = File.expand_path(@log_file)
+        FileUtils.mkdir_p(real_path) unless File.exist?(File.dirname(real_path))
+        @logger   = File.open(real_path, (File::WRONLY | File::APPEND | File::CREAT))
+      else
+        @logger   = @log_file
+      end
     end
+
   end
 
 end

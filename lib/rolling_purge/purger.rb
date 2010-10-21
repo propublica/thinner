@@ -3,28 +3,32 @@ module RollingPurge
   class Purger
 
     def initialize(urls)
-      @batch   = RollingPurge.configuration.batch_length
-      @timeout = RollingPurge.configuration.sleep_time
-      @urls    = urls
+      @urls = urls
     end
 
     def purge!
-      urls = @urls
+      self.class.stop!
+      puts "==== Starting purge see: #{RollingPurge.configuration.log_file} for finished urls."
       client_id = fork {
-        $0 = PROCESS_IDENTIFIER
-        while urls.length > 0
-          urls_to_purge = urls.slice! 0, @batch
-          Client.new(urls_to_purge).run! if !urls_to_purge.nil?
-          sleep @timeout
-        end
+        Client.new(@urls).run!
       }
       Process.detach(client_id)
     end
 
     # Helpful way to find pids by prefix from resque.
     def self.job_ids
-      `ps -A -o pid,command | grep "#{PROCESS_IDENTIFIER}"`.split("\n").map do |line|
-        line.split(' ')[0]
+      lines = `ps -A -o pid,command | grep #{PROCESS_IDENTIFIER}`.split("\n").map do |line|
+        line.split(' ')[0].to_i
+      end
+    end
+
+    def self.stop!
+      job_ids.each do |pid|
+        begin
+          Process.kill("KILL", pid.to_i) rescue nil
+          puts "==== Killing process: #{pid}"
+        rescue Errno::ESRCH
+        end
       end
     end
 
