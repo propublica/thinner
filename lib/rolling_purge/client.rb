@@ -53,7 +53,7 @@ module RollingPurge
 
     def close_log
       @logger.close
-      Process.exit(0)
+      exit(0)
     end
 
   end

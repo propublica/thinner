@@ -7,7 +7,7 @@ module RollingPurge
     end
 
     def purge!
-      self.class.stop!
+      self.class.stop! unless RollingPurge.configuration.no_kill
       puts "==== Starting purge see: #{RollingPurge.configuration.log_file} for finished urls."
       client_id = fork {
         Client.new(@urls).run!

@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name          = "rolling_purge"
-    gem.summary       = %Q{Slow purges for varnish useful on app deploys.}
-    gem.description   = %Q{Rolling purge takes a list of urls or newline seperated stdin and purges them from varnish.}
+    gem.summary       = %Q{Thinner removes varnish cache, as slowly as you need it to.}
+    gem.description   = %Q{Thinner takes a list of urls or newline seperated stdin and purges them from varnish.}
     gem.email         = "thejefflarson@gmail.com"
     gem.homepage      = "http://github.com/propublica/rolling_purge"
     gem.authors       = ["Jeff Larson"]

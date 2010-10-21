@@ -36,11 +36,14 @@ module RollingPurge
             @urls << url
           end
         end
-        opts.on("-s", "--server", "Varnish url, e.g. http://127.0.0.1:6082/") do |s|
+        opts.on("-s", "--server SERVER", "Varnish url, e.g. 127.0.0.1:6082") do |s|
           @options[:server] = s
         end
         opts.on("-o", "--log_file LOG_PATH", "Log file to output to defaults to standard out") do |o|
           @options[:log_file] = o
+        end
+        opts.on("-n", "--no-kill", "Don't kill the running purgers if they exist") do |n|
+          @options[:no_kill] = n
         end
       end
 
