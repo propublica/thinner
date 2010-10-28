@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby -rubygems
-
-require "#{File.dirname __FILE__}/../lib/rolling_purge/command_line.rb"
-
-RollingPurge::CommandLine.new
