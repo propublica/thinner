@@ -4,7 +4,7 @@ module Thinner
 
     attr_reader :purged_urls
 
-    ERRORS = [Varnish::Error, Varnish::BrokenConnection, Varnish::CommandFailed, Timeout::Error]
+    ERRORS = [Varnish::Error, Varnish::BrokenConnection, Varnish::CommandFailed, Timeout::Error, Errno::ECONNREFUSED]
 
     def initialize(urls)
       @batch        = Thinner.configuration.batch_length
@@ -13,6 +13,7 @@ module Thinner
       @logger       = Thinner.configuration.logger
       @purged_urls  = []
       @urls         = Array.new urls
+      @length       = @urls.length
       handle_errors
     end
 
@@ -23,11 +24,14 @@ module Thinner
         purge_urls
         sleep @timeout
       end
+      close_log
     end
 
     def purge_urls
       @current_job.each do |url|
         begin
+          @varnish.start if @varnish.stopped?
+          while(!@varnish.running?) do sleep 0.1 end
           if @varnish.purge :url, url
             log! "Purged url: #{url}"
             @purged_urls << url
@@ -52,6 +56,8 @@ module Thinner
     end
 
     def close_log
+      @logger.info "Purged #{@purged_urls.length} of #{@length} urls."
+      @logger.info "Exiting..."
       @logger.close
       exit
     end

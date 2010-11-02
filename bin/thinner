@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby -rubygems
+require "#{File.dirname __FILE__}/../lib/thinner/command_line.rb"
+
+Thinner::CommandLine.new

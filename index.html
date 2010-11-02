@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Thinner -- Version 0.0.1
+</title>
+    <link rel="stylesheet" type="text/css" href="documentation/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="documentation/css/dawn.css" />
+  </head>
+  <body>
+    <a href="http://www.propublica.org" class="propublica">&nbsp;</a>
+    <h1>Thinner &ndash; Version 0.0.1
+</h1>
+    <p>Thinner is a utility for purging urls from a Varnish server.</p>
+    <p>When you are deploying code changes to a server under load it's always
+      disconcerting to globally purge stale objects from a warm cache. Often,
+      allowing stale caches to stick around for a while saves both server performance
+      and sanity. Thinner allows you to define a list of urls and purges those
+      urls over time, so your caches can stay warm.</p>
+    <p>All that being said, however, Thinner isn't really a solution for observing
+      model changes and purging associated urls. If you have a highly dynamic
+      application, it's worlds better to handle purging via a
+      <a href="http://github.com/russ/lacquer/blob/master/lib/lacquer/delayed_job_job.rb">job server</a>
+      outside of the request-response flow.</p>
+    <h2>Installation</h2>
+    <p>Thinner is available via rubygems:
+    <pre>gem install thinner</pre>
+    <h2>Usage</h2>
+    <p>Thinner has both a library and command-line interface. To use it as a gem
+      you'll first have to configure how it works by calling <strong>Thinner.configure</strong>.
+      Here's a quick rundown of all of the options available:</p>
+      <pre class="dawn"><span class="Support">Thinner</span><span class="PunctuationSeparator">.</span><span class="Entity">configure</span> <span class="Keyword">do </span><span class="PunctuationSeparator">|</span><span class="Variable">config</span><span class="PunctuationSeparator">|</span>
+<span class="Comment">  <span class="Comment">#</span> Number of urls to purge at one time. These purge request are fired in quick</span>
+<span class="Comment">  <span class="Comment">#</span> succession so it's best to be conservative and not overload the Varnish</span>
+<span class="Comment">  <span class="Comment">#</span> server.</span>
+  config<span class="PunctuationSeparator">.</span><span class="Entity">batch_length</span> <span class="Keyword">=</span> <span class="Constant">10</span>
+
+<span class="Comment">  <span class="Comment">#</span> The amount of time to sleep between purges in seconds.</span>
+  config<span class="PunctuationSeparator">.</span><span class="Entity">sleep_time</span>   <span class="Keyword">=</span> <span class="Constant">1</span>
+
+<span class="Comment">  <span class="Comment">#</span> The server address and management port. See:</span>
+<span class="Comment">  <span class="Comment">#</span>   http://www.varnish-cache.org/trac/wiki/ManagementPort</span>
+<span class="Comment">  <span class="Comment">#</span> for details.</span>
+  config<span class="PunctuationSeparator">.</span><span class="Entity">server</span>       <span class="Keyword">=</span> &quot;127.0.0.1:6082&quot;
+
+<span class="Comment">  <span class="Comment">#</span> By default everytime you start a Thinner purge it spins off a new instance</span>
+<span class="Comment">  <span class="Comment">#</span> of a Thinner::Client and terminates any that are running. If you want to</span>
+<span class="Comment">  <span class="Comment">#</span> have overlapping instances set this to true.</span>
+  config<span class="PunctuationSeparator">.</span><span class="Entity">no_kill</span>      <span class="Keyword">=</span> <span class="Constant">false</span>
+
+<span class="Comment">  <span class="Comment">#</span> The log file (either a strign or file object) to log the current batch to.</span>
+<span class="Comment">  <span class="Comment">#</span> Defaults to STDOUT</span>
+  config<span class="PunctuationSeparator">.</span><span class="Entity">log_file</span>     <span class="Keyword">=</span> <span class="Variable">STDOUT</span>
+<span class="Keyword">end</span>
+</pre>
+    <p>Once you have the configuration in place call <strong>purge!</strong> with
+      an array of urls:</p>
+      <pre class="dawn"><span class="Comment"><span class="Comment">#</span> The urls in this array are purged in order, so you'll want to structure it</span>
+<span class="Comment"><span class="Comment">#</span> according to usage.</span>
+arr <span class="Keyword">&lt;&lt;</span> [&quot;/some_route&quot;<span class="PunctuationSeparator">,</span> &quot;/&quot;]
+
+<span class="Support">Thinner</span><span class="PunctuationSeparator">.</span><span class="Entity">purge!</span> arr
+</pre>
+    <p>Thinner will then fork a background process and purge the urls. You can
+      check the progress of the purge by tailing the log file or with:</p>
+      <pre>varnishlog | grep purge</pre>
+    <p>If ruby's not your cup of tea, thinner also has a command line interface.
+      Once you've installed the gem run <strong>thinner -h</strong> to see the
+      available options.</p>
+    <p>The command line interface accepts a newline separated list of urls by
+      setting the <strong>-e</strong> flag. So you'll be able to use the command
+      like so:</p>
+      <pre>cat urls_to_purge.txt | bin/thinner -e</pre>
+    <h2>Change Log</h2>
+    <h3>0.1.0</h3>
+    <p>Initial release.</p>
+    </body>
+</html>

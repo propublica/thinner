@@ -26,7 +26,7 @@ module Thinner
       job_ids.each do |pid|
         begin
           Process.kill("KILL", pid.to_i)
-          puts "==== Killing process: #{pid}"
+          Thinner.configuration.logger.warn "==== Killing process: #{pid}"
         rescue Errno::ESRCH
         end
       end

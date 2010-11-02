@@ -48,9 +48,17 @@ task :default => :test
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "thinner #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+desc "Render prose documentation"
+task :gh do
+  require 'erb'
+  File.open("index.html", "w") do |f|
+    f.write ERB.new(File.open("documentation/index.html.erb").read).result
+  end
+end
+

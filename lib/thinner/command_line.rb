@@ -1,13 +1,24 @@
 require 'optparse'
-require "#{File.dirname __FILE__}/../thinner.rb"
+require File.expand_path("#{File.dirname __FILE__}/../thinner.rb")
 
 module Thinner
 
   class CommandLine
 
+    BANNER = <<-EOF
+Thinner purges varnish caches as slowly as you need it to.
+
+Documentation: http://propublica.github.com/thinner/
+
+Usage: thinner OPTIONS URL
+
+Options:
+EOF
+
     def initialize
-      @urls = ARGV || []
+      @urls = []
       options!
+      @urls ||= ARGV
       run!
     end
 
@@ -24,26 +35,30 @@ module Thinner
 
     def options!
       @options = {}
-      @option_parser = OptionParser.new do |opts|
-        opts.on("-b", "--batch_length BATCH", "number of urls to purge at once") do |b|
+      @option_parser = OptionParser.new(BANNER) do |opts|
+        opts.on("-b", "--batch_length BATCH", "Number of urls to purge at once") do |b|
           @options[:batch_length] = b.to_i
         end
-        opts.on("-t", "--sleep_time SLEEP", "time to wait in between batches") do |t|
+        opts.on("-t", "--sleep_time SLEEP", "Time to wait in between batches") do |t|
           @options[:sleep_time] = t.to_i
         end
-        opts.on("-e", "--stdin", "use stdin for urls") do
+        opts.on("-e", "--stdin", "Use stdin for urls") do
           ARGF.each_line do |url|
-            @urls << url
+            @urls << url.chomp
           end
         end
         opts.on("-s", "--server SERVER", "Varnish url, e.g. 127.0.0.1:6082") do |s|
           @options[:server] = s
         end
-        opts.on("-o", "--log_file LOG_PATH", "Log file to output to defaults to standard out") do |o|
+        opts.on("-o", "--log_file LOG_PATH", "Log file to output to (default: Standard Out") do |o|
           @options[:log_file] = o
         end
         opts.on("-n", "--no-kill", "Don't kill the running purgers if they exist") do |n|
           @options[:no_kill] = n
+        end
+        opts.on_tail("-h", "--help", "Display this help message") do
+          puts opts.help
+          exit
         end
       end
 
