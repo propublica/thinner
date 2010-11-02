@@ -10,6 +10,7 @@ class TestClient < Test::Unit::TestCase
 
     should "purge urls" do
       @client.run!
+      $0 = "Tester"
       assert_equal @client.purged_urls, URLS
     end
 
