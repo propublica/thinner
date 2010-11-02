@@ -30,7 +30,6 @@ module Thinner
 
 end
 
-# Various requires and dependencies
 require "klarlack"
 require "logger"
 require "#{Thinner::ROOT}/lib/thinner/configuration"
