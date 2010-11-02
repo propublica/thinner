@@ -3,31 +3,32 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title>Thinner -- Version 0.0.1
+    <title>Thinner -- Version 0.1.0
 </title>
     <link rel="stylesheet" type="text/css" href="documentation/css/styles.css" />
     <link rel="stylesheet" type="text/css" href="documentation/css/dawn.css" />
   </head>
   <body>
     <a href="http://www.propublica.org" class="propublica">&nbsp;</a>
-    <h1>Thinner &ndash; Version 0.0.1
+    <h1>Thinner &ndash; Version 0.1.0
 </h1>
     <p><a href="https://github.com/propublica/thinner">Thinner</a> is a utility
       for purging urls from a Varnish server.</p>
-    <p>When you are deploying code changes to a server under load it's always
-      disconcerting to globally purge stale objects from a warm cache. Often,
-      allowing stale caches to stick around for a while saves both server performance
-      and sanity.</p>
+    <p>When you are deploying code changes to a server under load, the uncached
+       load can quickly bring down your backend server even with Varnish's grace
+       mode. Often, allowing stale caches to stick around for a while saves
+       both server performance and sanity.</p>
     <p>Thinner gives you fine-grained control over wildcard purging, and rolls
       purges out slowly. Your users will see stale pages from the previous deploy
       until thinner has finished invalidating the stale cache at a rate that you set.
       If you have a bunch of pages you need to invalidate en masse, but don't
       want to risk overloading your server, Thinner is for you.</p>
-    <p>All that being said, however, Thinner isn't really a solution for observing
+    <p>All that being said, Thinner isn't really a solution for observing
       model changes and purging associated urls. If you have a highly dynamic
       application, it's worlds better to handle purging via a
       <a href="http://github.com/russ/lacquer/blob/master/lib/lacquer/delayed_job_job.rb">job server</a>
-      outside of the request-response flow. </p>
+      outside of the request-response flow.</p>
+    <p><a href="docs/index.html">API docs are available.</a></p>
     <h2>Installation</h2>
     <p>Thinner is available via rubygems:
     <pre>gem install thinner</pre>
@@ -37,8 +38,8 @@
       Here's a quick rundown of all of the options available:</p>
       <pre class="dawn"><span class="Support">Thinner</span><span class="PunctuationSeparator">.</span><span class="Entity">configure</span> <span class="Keyword">do </span><span class="PunctuationSeparator">|</span><span class="Variable">config</span><span class="PunctuationSeparator">|</span>
 <span class="Comment">  <span class="Comment">#</span> Number of urls to purge at one time. These purge requests are fired in quick</span>
-<span class="Comment">  <span class="Comment">#</span> succession, so it's best to be conservative and not overload the Varnish</span>
-<span class="Comment">  <span class="Comment">#</span> server.</span>
+<span class="Comment">  <span class="Comment">#</span> succession. Thinner is perfectly capable of killing a Varnish server, by</span>
+<span class="Comment">  <span class="Comment">#</span> overloading the worker thread, so be really conservative with this option.</span>
   config<span class="PunctuationSeparator">.</span><span class="Entity">batch_length</span> <span class="Keyword">=</span> <span class="Constant">10</span>
 
 <span class="Comment">  <span class="Comment">#</span> The amount of time to sleep between purges in seconds.</span>
@@ -56,7 +57,7 @@
 <span class="Comment">  <span class="Comment">#</span> same time.</span>
   config<span class="PunctuationSeparator">.</span><span class="Entity">no_kill</span>      <span class="Keyword">=</span> <span class="Constant">false</span>
 
-<span class="Comment">  <span class="Comment">#</span> The log file (either a strign or file object) to log the current batch to.</span>
+<span class="Comment">  <span class="Comment">#</span> The log file (either a string or file object) to log the current batch to.</span>
 <span class="Comment">  <span class="Comment">#</span> Defaults to STDOUT</span>
   config<span class="PunctuationSeparator">.</span><span class="Entity">log_file</span>     <span class="Keyword">=</span> <span class="Variable">STDOUT</span>
 <span class="Keyword">end</span>
