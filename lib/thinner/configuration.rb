@@ -1,11 +1,12 @@
 require 'logger'
 
 module Thinner
-
+  # Thinner::Configuration holds the various settings for Thinner
   class Configuration
 
     attr_accessor :batch_length, :sleep_time, :server, :log_file, :no_kill
 
+    # Create a Thinner::Configutation instance with sane defaults.
     def initialize
       # Number of urls to purge at one time. These purge requests are fired in quick
       # succession, so it's best to be conservative and not overload the Varnish
@@ -26,13 +27,6 @@ module Thinner
       # The log file (either a string or file object) to log the current batch to.
       # Defaults to STDOUT
       @log_file     = STDOUT
-    end
-
-    def logger
-      if !log_file.respond_to?(:write)
-        STDOUT.reopen(File.open(@log_file, (File::WRONLY | File::APPEND | File::CREAT)))
-      end
-      @logger = Logger.new(STDOUT)
     end
 
   end

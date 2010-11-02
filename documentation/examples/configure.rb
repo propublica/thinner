@@ -1,7 +1,7 @@
 Thinner.configure do |config|
   # Number of urls to purge at one time. These purge requests are fired in quick
-  # succession, so it's best to be conservative and not overload the Varnish
-  # server.
+  # succession. Thinner is perfectly capable of killing a Varnish server, by
+  # overloading the worker thread, so be really conservative with this option.
   config.batch_length = 10
 
   # The amount of time to sleep between purges in seconds.
@@ -19,7 +19,7 @@ Thinner.configure do |config|
   # same time.
   config.no_kill      = false
 
-  # The log file (either a strign or file object) to log the current batch to.
+  # The log file (either a string or file object) to log the current batch to.
   # Defaults to STDOUT
   config.log_file     = STDOUT
 end

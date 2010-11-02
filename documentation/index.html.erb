@@ -21,17 +21,20 @@ end
     <h1>Thinner &ndash; Version <%= File.read('VERSION') %></h1>
     <p><a href="https://github.com/propublica/thinner">Thinner</a> is a utility
       for purging urls from a Varnish server.</p>
-    <p>When you are deploying code changes to a server under load it's always
-      disconcerting to globally purge stale objects from a warm cache. Often,
-      allowing stale caches to stick around for a while saves both server performance
-      and sanity. Thinner allows you to define a list of urls and purges those
-      urls over time, so your caches can stay warm. If you have a bunch of pages that
-      will only change when you deploy your app, Thinner is for you.</p>
-    <p>All that being said, however, Thinner isn't really a solution for observing
+    <p>When you are deploying code changes to a server under load, the uncached
+       load can quickly bring down your backend server even with Varnish's grace
+       mode. Often, allowing stale caches to stick around for a while saves
+       both server performance and sanity.</p>
+    <p>Thinner gives you fine-grained control over wildcard purging, and rolls
+      purges out slowly. Your users will see stale pages from the previous deploy
+      until thinner has finished invalidating the stale cache at a rate that you set.
+      If you have a bunch of pages you need to invalidate en masse, but don't
+      want to risk overloading your server, Thinner is for you.</p>
+    <p>All that being said, Thinner isn't really a solution for observing
       model changes and purging associated urls. If you have a highly dynamic
       application, it's worlds better to handle purging via a
       <a href="http://github.com/russ/lacquer/blob/master/lib/lacquer/delayed_job_job.rb">job server</a>
-      outside of the request-response flow. </p>
+      outside of the request-response flow.</p>
     <h2>Installation</h2>
     <p>Thinner is available via rubygems:
     <pre>gem install thinner</pre>

@@ -2,9 +2,9 @@ require 'optparse'
 require File.expand_path("#{File.dirname __FILE__}/../thinner.rb")
 
 module Thinner
-
   class CommandLine
 
+    # Usage and summary
     BANNER = <<-EOF
 Thinner purges varnish caches as slowly as you need it to.
 
@@ -14,7 +14,8 @@ Usage: thinner OPTIONS URL
 
 Options:
 EOF
-
+    # Create a Thinner::CommandLine, parse any associated options, grab a list
+    # of urls and start the process
     def initialize
       @urls = []
       options!
@@ -22,6 +23,8 @@ EOF
       run!
     end
 
+    # Build a Thinner::Configuration instance from the passed in options and go
+    # to the races.
     def run!
       Thinner.configure do |config|
         @options.each_pair do |key, value|
@@ -33,6 +36,7 @@ EOF
 
     private
 
+    # Parse the command line options using OptionParser.
     def options!
       @options = {}
       @option_parser = OptionParser.new(BANNER) do |opts|

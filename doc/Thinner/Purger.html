@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Thinner::Purger</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (P)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Thinner.html" title="Thinner (module)">Thinner</a></span></span>
+     &raquo; 
+    <span class="title">Purger</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Thinner::Purger
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Thinner::Purger</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/thinner/purger.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+A Thinner::Purger dispatches a client and ensures only one instance of a
+Thinner::Client is running at a given time.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#job_ids-class_method" title="job_ids (class method)">+ (Object) <strong>job_ids</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A list of Thinner::Client process ids &#8212; adapted from resque.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stop%21-class_method" title="stop! (class method)">+ (Object) <strong>stop!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Before we spin up a new client each running process is killed by pid.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Purger) <strong>initialize</strong>(urls) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Each Purger accepts a list of urls to pass on to the client to purge.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#purge%21-instance_method" title="#purge! (instance method)">- (Object) <strong>purge!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+After the configuration is in place and the Purger has a list of urls, it
+can fork a client process to run in the background.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Thinner::Purger (class)">Purger</a></span></tt>) <strong>initialize</strong>(urls) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Each Purger accepts a list of urls to pass on to the client to purge.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 6</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='urls identifier id'>urls</span><span class='rparen token'>)</span>
+  <span class='@urls ivar id'>@urls</span> <span class='assign token'>=</span> <span class='urls identifier id'>urls</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="job_ids-class_method">
+  
+    + (<tt>Object</tt>) <strong>job_ids</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A list of Thinner::Client process ids &#8212; adapted from resque.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27
+28</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 24</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='job_ids identifier id'>job_ids</span>
+  <span class='lines identifier id'>lines</span> <span class='assign token'>=</span> <span class='dxstring node'>`ps -A -o pid,command | grep #{PROCESS_IDENTIFIER}`</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='line identifier id'>line</span><span class='bitor op'>|</span>
+    <span class='line identifier id'>line</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>' '</span><span class='rparen token'>)</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="stop!-class_method">
+  
+    + (<tt>Object</tt>) <strong>stop!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Before we spin up a new client each running process is killed by pid. Each
+killed process is logged in the Thinner log file.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 32</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='stop! fid id'>stop!</span>
+  <span class='job_ids identifier id'>job_ids</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='pid identifier id'>pid</span><span class='bitor op'>|</span>
+    <span class='begin begin kw'>begin</span>
+      <span class='Process constant id'>Process</span><span class='dot token'>.</span><span class='kill identifier id'>kill</span><span class='lparen token'>(</span><span class='string val'>&quot;KILL&quot;</span><span class='comma token'>,</span> <span class='pid identifier id'>pid</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='rparen token'>)</span>
+      <span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;==== Killing process: #{pid}&quot;</span>
+    <span class='rescue rescue kw'>rescue</span> <span class='Errno constant id'>Errno</span><span class='colon2 op'>::</span><span class='ESRCH constant id'>ESRCH</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="purge!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>purge!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+After the configuration is in place and the Purger has a list of urls, it
+can fork a client process to run in the background. By default the Purger
+will kill any old Thinner::Client processes still running so as to not
+double up on purge requests.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 14</span>
+
+<span class='def def kw'>def</span> <span class='purge! fid id'>purge!</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='stop! fid id'>stop!</span> <span class='unless unless_mod kw'>unless</span> <span class='Thinner constant id'>Thinner</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span><span class='dot token'>.</span><span class='no_kill identifier id'>no_kill</span>
+  <span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;==== Starting purge see: #{Thinner.configuration.log_file} for finished urls.&quot;</span>
+  <span class='client_id identifier id'>client_id</span> <span class='assign token'>=</span> <span class='fork identifier id'>fork</span> <span class='lbrace token'>{</span>
+    <span class='Client constant id'>Client</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='@urls ivar id'>@urls</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='run! fid id'>run!</span>
+  <span class='rbrace token'>}</span>
+  <span class='Process constant id'>Process</span><span class='dot token'>.</span><span class='detach identifier id'>detach</span><span class='lparen token'>(</span><span class='client_id identifier id'>client_id</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Nov  2 12:38:58 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

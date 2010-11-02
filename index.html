@@ -17,9 +17,12 @@
     <p>When you are deploying code changes to a server under load it's always
       disconcerting to globally purge stale objects from a warm cache. Often,
       allowing stale caches to stick around for a while saves both server performance
-      and sanity. Thinner allows you to define a list of urls and purges those
-      urls over time, so your caches can stay warm. If you have a bunch of pages that
-      will only change when you deploy your app, Thinner is for you.</p>
+      and sanity.</p>
+    <p>Thinner gives you fine-grained control over wildcard purging, and rolls
+      purges out slowly. Your users will see stale pages from the previous deploy
+      until thinner has finished invalidating the stale cache at a rate that you set.
+      If you have a bunch of pages you need to invalidate en masse, but don't
+      want to risk overloading your server, Thinner is for you.</p>
     <p>All that being said, however, Thinner isn't really a solution for observing
       model changes and purging associated urls. If you have a highly dynamic
       application, it's worlds better to handle purging via a

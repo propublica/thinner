@@ -1,16 +1,17 @@
- ______   __  __     __     __   __     __   __     ______     ______
-/\__  _\ /\ \_\ \   /\ \   /\ "-.\ \   /\ "-.\ \   /\  ___\   /\  == \
-\/_/\ \/ \ \  __ \  \ \ \  \ \ \-.  \  \ \ \-.  \  \ \  __\   \ \  __<
-   \ \_\  \ \_\ \_\  \ \_\  \ \_\\"\_\  \ \_\\"\_\  \ \_____\  \ \_\ \_\
-    \/_/   \/_/\/_/   \/_/   \/_/ \/_/   \/_/ \/_/   \/_____/   \/_/ /_/
+=
+   ______   __  __     __     __   __     __   __     ______     ______
+  /\__  _\ /\ \_\ \   /\ \   /\ "-.\ \   /\ "-.\ \   /\  ___\   /\  == \
+  \/_/\ \/ \ \  __ \  \ \ \  \ \ \-.  \  \ \ \-.  \  \ \  __\   \ \  __<
+     \ \_\  \ \_\ \_\  \ \_\  \ \_\\"\_\  \ \_\\"\_\  \ \_____\  \ \_\ \_\
+      \/_/   \/_/\/_/   \/_/   \/_/ \/_/   \/_/ \/_/   \/_____/   \/_/ /_/
 
-Thinner purges varnish caches as slowly as you need it to. Rather than
-deploying an application and purging your cache in one fell swoop, thinner
-allows you to purge urls from a varnish cache in batches and over time.
+  Thinner purges varnish caches as slowly as you need it to. Rather than
+  deploying an application and purging your cache in one fell swoop, thinner
+  allows you to purge urls from a varnish cache in batches and over time.
 
-For usage and installation instructions, see:
-http://propublica.github.com/thinner/
+  For usage and installation instructions, see:
+  http://propublica.github.com/thinner/
 
-To report a bug or suggest a feature:
-https://github.com/propublica/thinner/issues
+  To report a bug or suggest a feature:
+  https://github.com/propublica/thinner/issues
 
