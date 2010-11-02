@@ -26,12 +26,13 @@ end
       disconcerting to globally purge stale objects from a warm cache. Often,
       allowing stale caches to stick around for a while saves both server performance
       and sanity. Thinner allows you to define a list of urls and purges those
-      urls over time, so your caches can stay warm.</p>
+      urls over time, so your caches can stay warm. If you have a bunch of pages that
+      will only change when you deploy your app, Thinner is for you.</p>
     <p>All that being said, however, Thinner isn't really a solution for observing
       model changes and purging associated urls. If you have a highly dynamic
       application, it's worlds better to handle purging via a
       <a href="http://github.com/russ/lacquer/blob/master/lib/lacquer/delayed_job_job.rb">job server</a>
-      outside of the request-response flow.</p>
+      outside of the request-response flow. </p>
     <h2>Installation</h2>
     <p>Thinner is available via rubygems:
     <pre>gem install thinner</pre>

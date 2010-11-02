@@ -12,17 +12,19 @@
     <a href="http://www.propublica.org" class="propublica">&nbsp;</a>
     <h1>Thinner &ndash; Version 0.0.1
 </h1>
-    <p>Thinner is a utility for purging urls from a Varnish server.</p>
+    <p><a href="https://github.com/propublica/thinner">Thinner</a> is a utility
+      for purging urls from a Varnish server.</p>
     <p>When you are deploying code changes to a server under load it's always
       disconcerting to globally purge stale objects from a warm cache. Often,
       allowing stale caches to stick around for a while saves both server performance
       and sanity. Thinner allows you to define a list of urls and purges those
-      urls over time, so your caches can stay warm.</p>
+      urls over time, so your caches can stay warm. If you have a bunch of pages that
+      will only change when you deploy your app, Thinner is for you.</p>
     <p>All that being said, however, Thinner isn't really a solution for observing
       model changes and purging associated urls. If you have a highly dynamic
       application, it's worlds better to handle purging via a
       <a href="http://github.com/russ/lacquer/blob/master/lib/lacquer/delayed_job_job.rb">job server</a>
-      outside of the request-response flow.</p>
+      outside of the request-response flow. </p>
     <h2>Installation</h2>
     <p>Thinner is available via rubygems:
     <pre>gem install thinner</pre>
@@ -44,9 +46,10 @@
 <span class="Comment">  <span class="Comment">#</span> for details.</span>
   config<span class="PunctuationSeparator">.</span><span class="Entity">server</span>       <span class="Keyword">=</span> &quot;127.0.0.1:6082&quot;
 
-<span class="Comment">  <span class="Comment">#</span> By default everytime you start a Thinner purge it spins off a new instance</span>
+<span class="Comment">  <span class="Comment">#</span> By default, every time you start a Thinner.purge! it spins off a new instance</span>
 <span class="Comment">  <span class="Comment">#</span> of a Thinner::Client and terminates any that are running. If you want to</span>
-<span class="Comment">  <span class="Comment">#</span> have overlapping instances set this to true.</span>
+<span class="Comment">  <span class="Comment">#</span> have overlapping instances set this to true. It's not recommended to have</span>
+<span class="Comment">  <span class="Comment">#</span> multiple Thinner::Client's running at the same time.</span>
   config<span class="PunctuationSeparator">.</span><span class="Entity">no_kill</span>      <span class="Keyword">=</span> <span class="Constant">false</span>
 
 <span class="Comment">  <span class="Comment">#</span> The log file (either a strign or file object) to log the current batch to.</span>
