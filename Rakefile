@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name          = "thinner"
-    gem.summary       = %Q{Thinner removes varnish cache, as slowly as you need it to.}
-    gem.description   = %Q{Thinner takes a list of urls or newline seperated stdin and purges them from varnish.}
+    gem.summary       = %Q{Thinner removes Varnish cache, as slowly as you need it to.}
+    gem.description   = %Q{Thinner takes a list of urls or newline seperated stdin and purges them from Varnish.}
     gem.email         = "thejefflarson@gmail.com"
     gem.homepage      = "http://github.com/propublica/thinner"
     gem.authors       = ["Jeff Larson"]
