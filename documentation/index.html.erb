@@ -19,7 +19,7 @@ end
   <body>
     <a href="http://www.propublica.org" class="propublica">&nbsp;</a>
     <h1>Thinner &ndash; Version <%= File.read('VERSION') %></h1>
-    <p><a href="https://github.com/propublica/thinner">Thinner</a> is a utility
+    <p><a href="https://github.com/propublica/Thinner">Thinner</a> is a utility
       for purging urls from a Varnish server.</p>
     <p>When you are deploying code changes to a server under load, the uncached
        load can quickly bring down your backend server even with Varnish's grace
@@ -27,7 +27,7 @@ end
        both server performance and sanity.</p>
     <p>Thinner gives you fine-grained control over wildcard purging, and rolls
       purges out slowly. Your users will see stale pages from the previous deploy
-      until thinner has finished invalidating the stale cache at a rate that you set.
+      until Thinner has finished invalidating the stale cache at a rate that you set.
       If you have a bunch of pages you need to invalidate en masse, but don't
       want to risk overloading your server, Thinner is for you.</p>
     <p>All that being said, Thinner isn't really a solution for observing
@@ -35,7 +35,7 @@ end
       application, it's worlds better to handle purging via a
       <a href="http://github.com/russ/lacquer/blob/master/lib/lacquer/delayed_job_job.rb">job server</a>
       outside of the request-response flow.</p>
-    <p><a href="doc/index.html">API docs are available.</a></p>
+    <p><a href="doc/index.html">API docs</a> | <a href="http://github.com/propublica/thinner/issues">Issue Tracker</a></p>
     <h2>Installation</h2>
     <p>Thinner is available via rubygems:
     <pre>gem install thinner</pre>
@@ -50,7 +50,7 @@ end
     <p>Thinner will then fork a background process and purge the urls. You can
       check the progress of the purge by tailing the log file or with:</p>
       <pre>varnishlog | grep purge</pre>
-    <p>If ruby's not your cup of tea, thinner also has a command line interface.
+    <p>If ruby's not your cup of tea, Thinner also has a command line interface.
       Once you've installed the gem run <strong>thinner -h</strong> to see the
       available options.</p>
     <p>The command line interface accepts a newline separated list of urls via
