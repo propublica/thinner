@@ -17,10 +17,11 @@ module Thinner
       #   http://www.varnish-cache.org/trac/wiki/ManagementPort
       # for details.
       @server       = "127.0.0.1:6082"
-      # By default, every time you start a Thinner.purge! it spins off a new instance
-      # of a Thinner::Client and terminates any that are running. If you want to
-      # have overlapping instances set this to true. It's not recommended to have
-      # multiple Thinner::Client's running at the same time.
+      # By default, every time you call Thinner.purge! thinner spins off a new
+      # instance of Thinner::Client and terminates any old instances that are
+      # running. If you want to have overlapping instances set this to true.
+      # It's not recommended to have multiple Thinner::Client's running at the
+      # same time.
       @no_kill      = false
       # The log file (either a string or file object) to log the current batch to.
       # Defaults to STDOUT
