@@ -240,12 +240,12 @@ Each Purger accepts a list of urls to pass on to the client to purge.
       <pre class="lines">
 
 
-6
-7
-8</pre>
+8
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 8</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='urls identifier id'>urls</span><span class='rparen token'>)</span>
   <span class='@urls ivar id'>@urls</span> <span class='assign token'>=</span> <span class='urls identifier id'>urls</span>
@@ -287,14 +287,14 @@ A list of Thinner::Client process ids &#8212; adapted from resque.
       <pre class="lines">
 
 
-24
-25
 26
 27
-28</pre>
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 26</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='job_ids identifier id'>job_ids</span>
   <span class='lines identifier id'>lines</span> <span class='assign token'>=</span> <span class='dxstring node'>`ps -A -o pid,command | grep #{PROCESS_IDENTIFIER}`</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;\n&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='line identifier id'>line</span><span class='bitor op'>|</span>
@@ -318,7 +318,7 @@ A list of Thinner::Client process ids &#8212; adapted from resque.
   <div class="discussion">
     <p>
 Before we spin up a new client each running process is killed by pid. Each
-killed process is logged in the Thinner log file.
+killed process&#8217;s id is logged in the Thinner log file.
 </p>
 
 
@@ -332,18 +332,18 @@ killed process is logged in the Thinner log file.
       <pre class="lines">
 
 
-32
-33
 34
 35
 36
 37
 38
 39
-40</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 34</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='stop! fid id'>stop!</span>
   <span class='job_ids identifier id'>job_ids</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='pid identifier id'>pid</span><span class='bitor op'>|</span>
@@ -393,17 +393,17 @@ double up on purge requests.
       <pre class="lines">
 
 
-14
-15
 16
 17
 18
 19
 20
-21</pre>
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/purger.rb', line 16</span>
 
 <span class='def def kw'>def</span> <span class='purge! fid id'>purge!</span>
   <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='stop! fid id'>stop!</span> <span class='unless unless_mod kw'>unless</span> <span class='Thinner constant id'>Thinner</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span><span class='dot token'>.</span><span class='no_kill identifier id'>no_kill</span>
@@ -424,7 +424,7 @@ double up on purge requests.
 </div>
     
     <div id="footer">
-  Generated on Tue Nov  2 12:38:58 2010 by 
+  Generated on Tue Nov  2 12:57:06 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.1 (ruby-1.8.7).
 </div>

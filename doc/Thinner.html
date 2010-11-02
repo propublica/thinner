@@ -283,12 +283,12 @@ Returns the value of attribute configuration
       <pre class="lines">
 
 
-12
 13
-14</pre>
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner.rb', line 13</span>
 
 <span class='def def kw'>def</span> <span class='configuration identifier id'>configuration</span>
   <span class='@configuration ivar id'>@configuration</span>
@@ -343,13 +343,13 @@ Set any thinner settings by passing in a block.
       <pre class="lines">
 
 
-15
 16
 17
-18</pre>
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner.rb', line 16</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='configure identifier id'>configure</span>
   <span class='self self kw'>self</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span> <span class='opasgn op'>||=</span> <span class='Configuration constant id'>Configuration</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
@@ -385,12 +385,12 @@ Begin purging urls.
       <pre class="lines">
 
 
-26
 27
-28</pre>
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner.rb', line 27</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='purge! fid id'>purge!</span> <span class='urls identifier id'>urls</span>
   <span class='Purger constant id'>Purger</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='urls identifier id'>urls</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='purge! fid id'>purge!</span>
@@ -425,12 +425,12 @@ Halt any running instances of Thinner::Client
       <pre class="lines">
 
 
-21
 22
-23</pre>
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner.rb', line 22</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='stop! fid id'>stop!</span>
   <span class='Purger constant id'>Purger</span><span class='dot token'>.</span><span class='stop! fid id'>stop!</span>
@@ -446,7 +446,7 @@ Halt any running instances of Thinner::Client
 </div>
     
     <div id="footer">
-  Generated on Tue Nov  2 12:38:58 2010 by 
+  Generated on Tue Nov  2 12:57:06 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.1 (ruby-1.8.7).
 </div>
