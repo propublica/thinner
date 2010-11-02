@@ -30,7 +30,7 @@ module Thinner
     end
 
     # Before we spin up a new client each running process is killed by pid. Each
-    # killed process id is logged in the Thinner log file.
+    # killed process's id is logged in the Thinner log file.
     def self.stop!
       job_ids.each do |pid|
         begin
