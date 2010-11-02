@@ -28,8 +28,9 @@ end
     <p>Thinner gives you fine-grained control over wildcard purging, and rolls
       purges out slowly. Your users will see stale pages from the previous deploy
       until Thinner has finished invalidating the stale cache at a rate that you set.
-      If you have a bunch of pages you need to invalidate en masse, but don't
-      want to risk overloading your server, Thinner is for you.</p>
+      If you have a bunch of pages you need to invalidate en masse and at infrequent
+      intervals (e.g. deploys, timed remote api updates), but don't want to
+      risk overloading your server, Thinner is for you.</p>
     <p>All that being said, Thinner isn't really a solution for observing
       model changes and purging associated urls. If you have a highly dynamic
       application, it's worlds better to handle purging via a
