@@ -314,8 +314,6 @@ and makes a copy of the passed in urls.
       <pre class="lines">
 
 
-15
-16
 17
 18
 19
@@ -323,10 +321,13 @@ and makes a copy of the passed in urls.
 21
 22
 23
-24</pre>
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 17</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='urls identifier id'>urls</span><span class='rparen token'>)</span>
   <span class='@batch ivar id'>@batch</span>        <span class='assign token'>=</span> <span class='Thinner constant id'>Thinner</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span><span class='dot token'>.</span><span class='batch_length identifier id'>batch_length</span>
@@ -336,6 +337,7 @@ and makes a copy of the passed in urls.
   <span class='@purged_urls ivar id'>@purged_urls</span>  <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
   <span class='@urls ivar id'>@urls</span>         <span class='assign token'>=</span> <span class='Array constant id'>Array</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='urls identifier id'>urls</span>
   <span class='@length ivar id'>@length</span>       <span class='assign token'>=</span> <span class='@urls ivar id'>@urls</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
+  <span class='logger identifier id'>logger</span>
   <span class='handle_errors identifier id'>handle_errors</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -376,12 +378,12 @@ A list of successfully purged urls.
       <pre class="lines">
 
 
-8
-9
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 10</span>
 
 <span class='def def kw'>def</span> <span class='purged_urls identifier id'>purged_urls</span>
   <span class='@purged_urls ivar id'>@purged_urls</span>
@@ -423,19 +425,17 @@ Log the purged urls and exit the process.
       <pre class="lines">
 
 
-78
-79
-80
 81
-82</pre>
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 81</span>
 
 <span class='def def kw'>def</span> <span class='close_log identifier id'>close_log</span>
   <span class='@logger ivar id'>@logger</span><span class='dot token'>.</span><span class='info identifier id'>info</span> <span class='dstring node'>&quot;Purged #{@purged_urls.length} of #{@length} urls.&quot;</span>
   <span class='@logger ivar id'>@logger</span><span class='dot token'>.</span><span class='info identifier id'>info</span> <span class='string val'>&quot;Exiting...&quot;</span>
-  <span class='exit identifier id'>exit</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -468,14 +468,14 @@ and close the log.
       <pre class="lines">
 
 
-63
-64
-65
 66
-67</pre>
+67
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 66</span>
 
 <span class='def def kw'>def</span> <span class='handle_errors identifier id'>handle_errors</span>
   <span class='trap identifier id'>trap</span><span class='lparen token'>(</span><span class='string val'>'TERM'</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span> <span class='close_log identifier id'>close_log</span> <span class='rbrace token'>}</span>
@@ -512,15 +512,15 @@ The logger redirects all STDOUT writes to a logger instance.
       <pre class="lines">
 
 
-70
-71
-72
 73
 74
-75</pre>
+75
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 73</span>
 
 <span class='def def kw'>def</span> <span class='logger identifier id'>logger</span>
   <span class='if if kw'>if</span> <span class='notop op'>!</span><span class='@log_file ivar id'>@log_file</span><span class='dot token'>.</span><span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:write</span><span class='rparen token'>)</span>
@@ -560,18 +560,18 @@ the process label with the first url in the list.
       <pre class="lines">
 
 
-29
-30
-31
 32
 33
 34
 35
 36
-37</pre>
+37
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/client.rb', line 32</span>
 
 <span class='def def kw'>def</span> <span class='run! fid id'>run!</span>
   <span class='while while kw'>while</span> <span class='@urls ivar id'>@urls</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
@@ -593,7 +593,7 @@ the process label with the first url in the list.
 </div>
     
     <div id="footer">
-  Generated on Tue Nov  2 12:57:05 2010 by 
+  Generated on Tue Nov  2 14:11:21 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.1 (ruby-1.8.7).
 </div>

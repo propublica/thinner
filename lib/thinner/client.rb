@@ -1,3 +1,5 @@
+require 'logger'
+
 module Thinner
 
   # A Thinner::Client runs as a background process and purges a list of urls
@@ -20,6 +22,7 @@ module Thinner
       @purged_urls  = []
       @urls         = Array.new urls
       @length       = @urls.length
+      logger
       handle_errors
     end
 
@@ -78,7 +81,6 @@ module Thinner
     def close_log
       @logger.info "Purged #{@purged_urls.length} of #{@length} urls."
       @logger.info "Exiting..."
-      exit
     end
 
   end
