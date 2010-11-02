@@ -12,7 +12,7 @@
     <a href="http://www.propublica.org" class="propublica">&nbsp;</a>
     <h1>Thinner &ndash; Version 0.1.0
 </h1>
-    <p><a href="https://github.com/propublica/Thinner">Thinner</a> is a utility
+    <p><a href="https://github.com/propublica/thinner">Thinner</a> is a utility
       for purging urls from a Varnish server.</p>
     <p>When you are deploying code changes to a server under load, the uncached
        load can quickly bring down your backend server even with Varnish's grace
@@ -66,7 +66,7 @@
       an array of urls:</p>
       <pre class="dawn"><span class="Comment"><span class="Comment">#</span> The urls in this array are purged in order, so you'll want to structure it</span>
 <span class="Comment"><span class="Comment">#</span> according to usage.</span>
-arr <span class="Keyword">&lt;&lt;</span> [&quot;/some_route&quot;<span class="PunctuationSeparator">,</span> &quot;/&quot;]
+arr <span class="Keyword">&lt;&lt;</span> [&quot;/some_route&quot;<span class="PunctuationSeparator">,</span> &quot;/some_route/with.*&quot;<span class="PunctuationSeparator">,</span> &quot;/&quot;]
 
 <span class="Support">Thinner</span><span class="PunctuationSeparator">.</span><span class="Entity">purge!</span> arr
 </pre>
