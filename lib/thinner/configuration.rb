@@ -7,8 +7,9 @@ module Thinner
     attr_accessor :batch_length, :sleep_time, :server, :log_file, :no_kill
 
     def initialize
-      # Number of urls to purge at one time. These purge request are fired in quick
-      # succession so it's best to be conservative and not overload the Varnish server.
+      # Number of urls to purge at one time. These purge requests are fired in quick
+      # succession, so it's best to be conservative and not overload the Varnish
+      # server.
       @batch_length = 10
       # The amount of time to sleep between purges in seconds.
       @sleep_time   = 1

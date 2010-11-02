@@ -7,7 +7,6 @@ def code_for(file)
   file = File.open("#{DOCS}#{file}.rb").read
   Uv.parse(file, "xhtml", "ruby", false, "dawn", false)
 end
-
 %>
 <!DOCTYPE html>
 <html>

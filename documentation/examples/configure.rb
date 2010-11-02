@@ -1,6 +1,6 @@
 Thinner.configure do |config|
-  # Number of urls to purge at one time. These purge request are fired in quick
-  # succession so it's best to be conservative and not overload the Varnish
+  # Number of urls to purge at one time. These purge requests are fired in quick
+  # succession, so it's best to be conservative and not overload the Varnish
   # server.
   config.batch_length = 10
 
