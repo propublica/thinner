@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors = ["Jeff Larson"]
   s.date = %q{2010-11-02}
   s.default_executable = %q{thinner}
-  s.description = %q{Thinner takes a list of urls or newline seperated stdin and purges them from varnish.}
+  s.description = %q{Thinner takes a list of urls or newline seperated stdin and purges them from Varnish.}
   s.email = %q{thejefflarson@gmail.com}
   s.executables = ["thinner"]
   s.extra_rdoc_files = [
@@ -58,13 +58,14 @@ Gem::Specification.new do |s|
      "lib/thinner/configuration.rb",
      "lib/thinner/purger.rb",
      "test/helper.rb",
-     "test/test_thinner.rb"
+     "test/test_thinner.rb",
+     "thinner.gemspec"
   ]
   s.homepage = %q{http://github.com/propublica/thinner}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Thinner removes varnish cache, as slowly as you need it to.}
+  s.summary = %q{Thinner removes Varnish cache, as slowly as you need it to.}
   s.test_files = [
     "test/helper.rb",
      "test/test_thinner.rb"
