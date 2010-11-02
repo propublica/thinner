@@ -33,8 +33,8 @@
       you'll first have to configure how it works by calling <strong>Thinner.configure</strong>.
       Here's a quick rundown of all of the options available:</p>
       <pre class="dawn"><span class="Support">Thinner</span><span class="PunctuationSeparator">.</span><span class="Entity">configure</span> <span class="Keyword">do </span><span class="PunctuationSeparator">|</span><span class="Variable">config</span><span class="PunctuationSeparator">|</span>
-<span class="Comment">  <span class="Comment">#</span> Number of urls to purge at one time. These purge request are fired in quick</span>
-<span class="Comment">  <span class="Comment">#</span> succession so it's best to be conservative and not overload the Varnish</span>
+<span class="Comment">  <span class="Comment">#</span> Number of urls to purge at one time. These purge requests are fired in quick</span>
+<span class="Comment">  <span class="Comment">#</span> succession, so it's best to be conservative and not overload the Varnish</span>
 <span class="Comment">  <span class="Comment">#</span> server.</span>
   config<span class="PunctuationSeparator">.</span><span class="Entity">batch_length</span> <span class="Keyword">=</span> <span class="Constant">10</span>
 
@@ -46,10 +46,11 @@
 <span class="Comment">  <span class="Comment">#</span> for details.</span>
   config<span class="PunctuationSeparator">.</span><span class="Entity">server</span>       <span class="Keyword">=</span> &quot;127.0.0.1:6082&quot;
 
-<span class="Comment">  <span class="Comment">#</span> By default, every time you start a Thinner.purge! it spins off a new instance</span>
-<span class="Comment">  <span class="Comment">#</span> of a Thinner::Client and terminates any that are running. If you want to</span>
-<span class="Comment">  <span class="Comment">#</span> have overlapping instances set this to true. It's not recommended to have</span>
-<span class="Comment">  <span class="Comment">#</span> multiple Thinner::Client's running at the same time.</span>
+<span class="Comment">  <span class="Comment">#</span> By default, every time you call Thinner.purge! thinner spins off a new</span>
+<span class="Comment">  <span class="Comment">#</span> instance of Thinner::Client and terminates any old instances that are</span>
+<span class="Comment">  <span class="Comment">#</span> running. If you want to have overlapping instances set this to true.</span>
+<span class="Comment">  <span class="Comment">#</span> It's not recommended to have multiple Thinner::Client's running at the</span>
+<span class="Comment">  <span class="Comment">#</span> same time.</span>
   config<span class="PunctuationSeparator">.</span><span class="Entity">no_kill</span>      <span class="Keyword">=</span> <span class="Constant">false</span>
 
 <span class="Comment">  <span class="Comment">#</span> The log file (either a strign or file object) to log the current batch to.</span>
