@@ -2,6 +2,7 @@ require 'optparse'
 require File.expand_path("#{File.dirname __FILE__}/../thinner.rb")
 
 module Thinner
+
   class CommandLine
 
     # Usage and summary

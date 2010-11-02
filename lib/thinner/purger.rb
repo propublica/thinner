@@ -1,7 +1,9 @@
 module Thinner
+
   # A Thinner::Purger dispatches a client and ensures only one instance of a
   # Thinner::Client is running at a given time.
   class Purger
+
     # Each Purger accepts a list of urls to pass on to the client to purge.
     def initialize(urls)
       @urls = urls

@@ -1,7 +1,9 @@
 require 'helper'
 
 class TestClient < Test::Unit::TestCase
+
   context "a varnish client" do
+
     setup do
       Thinner.configure { }
       @urls = ["/"]
@@ -16,5 +18,7 @@ class TestClient < Test::Unit::TestCase
         assert_equal @client.purged_urls, @urls
       end
     end
+
   end
+
 end

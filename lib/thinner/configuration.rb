@@ -1,6 +1,7 @@
 require 'logger'
 
 module Thinner
+
   # Thinner::Configuration holds the various settings for Thinner
   class Configuration
 

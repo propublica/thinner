@@ -1,4 +1,5 @@
 module Thinner
+
   # The base location of the Thinner gem.
   ROOT               = File.expand_path "#{File.dirname __FILE__}/.."
 
