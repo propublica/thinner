@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{thinner}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeff Larson"]
-  s.date = %q{2010-11-02}
+  s.date = %q{2010-11-19}
   s.default_executable = %q{thinner}
   s.description = %q{Thinner takes a list of urls or newline seperated stdin and purges them from Varnish.}
   s.email = %q{thejefflarson@gmail.com}
