@@ -18,7 +18,6 @@ EOF
     # Create a Thinner::CommandLine, parse any associated options, grab a list
     # of urls and start the process
     def initialize
-      @urls = []
       options!
       @urls ||= ARGV
       run!
@@ -48,6 +47,7 @@ EOF
           @options[:sleep_time] = t.to_i
         end
         opts.on("-e", "--stdin", "Use stdin for urls") do
+          @urls = []
           ARGF.each_line do |url|
             @urls << url.chomp
           end
