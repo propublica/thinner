@@ -32,9 +32,10 @@ module Thinner
     # Before we spin up a new client each running process is killed by pid. Each
     # killed process's id is logged in the Thinner log file.
     def self.stop!
+      my_id = $$
       job_ids.each do |pid|
         begin
-          Process.kill("KILL", pid.to_i)
+          Process.kill("KILL", pid.to_i) unless pid.to_i = my_id
           puts "==== Killing process: #{pid}"
         rescue Errno::ESRCH
         end
