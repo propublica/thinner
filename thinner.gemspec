@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{thinner}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jeff Larson"]
-  s.date = %q{2010-11-19}
+  s.date = %q{2010-11-22}
   s.default_executable = %q{thinner}
   s.description = %q{Thinner takes a list of urls or newline seperated stdin and purges them from Varnish.}
   s.email = %q{thejefflarson@gmail.com}
@@ -77,14 +77,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<klarlack>, ["~> 0.0.6"])
-      s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
       s.add_dependency(%q<klarlack>, ["~> 0.0.6"])
-      s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
     end
   else
     s.add_dependency(%q<klarlack>, ["~> 0.0.6"])
-    s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
   end
 end
 
