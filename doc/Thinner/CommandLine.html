@@ -201,14 +201,12 @@ urls and start the process
 22
 23
 24
-25
-26</pre>
+25</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/thinner/command_line.rb', line 21</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
-  <span class='@urls ivar id'>@urls</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
   <span class='options! fid id'>options!</span>
   <span class='@urls ivar id'>@urls</span> <span class='opasgn op'>||=</span> <span class='ARGV constant id'>ARGV</span>
   <span class='run! fid id'>run!</span>
@@ -251,17 +249,17 @@ to the races.
       <pre class="lines">
 
 
+29
 30
 31
 32
 33
 34
 35
-36
-37</pre>
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/thinner/command_line.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/thinner/command_line.rb', line 29</span>
 
 <span class='def def kw'>def</span> <span class='run! fid id'>run!</span>
   <span class='Thinner constant id'>Thinner</span><span class='dot token'>.</span><span class='configure identifier id'>configure</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='config identifier id'>config</span><span class='bitor op'>|</span>
@@ -282,7 +280,7 @@ to the races.
 </div>
     
     <div id="footer">
-  Generated on Wed Nov 10 13:25:52 2010 by 
+  Generated on Mon Nov 22 12:10:40 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.1 (ruby-1.8.7).
 </div>

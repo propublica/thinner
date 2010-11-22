@@ -35,7 +35,7 @@ module Thinner
       my_id = $$
       job_ids.each do |pid|
         begin
-          Process.kill("KILL", pid.to_i) unless pid.to_i = my_id
+          Process.kill("KILL", pid.to_i) unless pid.to_i == my_id
           puts "==== Killing process: #{pid}"
         rescue Errno::ESRCH
         end
