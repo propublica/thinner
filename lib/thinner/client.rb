@@ -64,6 +64,7 @@ module Thinner
     # Trap certain signals so the Client can report back the progress of the
     # job and close the log.
     def handle_errors
+      trap('HUP')  { }
       trap('TERM') { close_log }
       trap('KILL') { close_log }
       trap('INT')  { close_log }
