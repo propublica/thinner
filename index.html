@@ -3,15 +3,13 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <title>Thinner -- Version 0.1.2
-</title>
+    <title>Thinner -- Version 0.1.4</title>
     <link rel="stylesheet" type="text/css" href="documentation/css/styles.css" />
     <link rel="stylesheet" type="text/css" href="documentation/css/dawn.css" />
   </head>
   <body>
     <a href="http://www.propublica.org" class="propublica">&nbsp;</a>
-    <h1>Thinner &ndash; Version 0.1.2
-</h1>
+    <h1>Thinner &ndash; Version 0.1.4</h1>
     <p><a href="https://github.com/propublica/thinner">Thinner</a> is a utility
       for purging urls from a Varnish server.</p>
     <p>When you are deploying code changes to a server under load, the uncached
@@ -82,6 +80,8 @@ arr <span class="Keyword">&lt;&lt;</span> [&quot;/some_route&quot;<span class="P
       the command like so:</p>
       <pre>cat urls_to_purge.txt | bin/thinner -e</pre>
     <h2>Change Log</h2>
+    <h3>0.1.2</h3>
+    <p>Force process to exit on signals and fixed gem warning.</p>
     <h3>0.1.1</h3>
     <p>Fixed bug in command line argument parsing.</p>
     <h3>0.1.0</h3>
