@@ -65,9 +65,9 @@ module Thinner
     # job and close the log.
     def handle_errors
       trap('HUP')  { }
-      trap('TERM') { close_log }
-      trap('KILL') { close_log }
-      trap('INT')  { close_log }
+      trap('TERM') { close_log; Process.exit! }
+      trap('KILL') { close_log; Process.exit! }
+      trap('INT')  { close_log; Process.exit! }
     end
 
     # The logger redirects all STDOUT writes to a logger instance.
